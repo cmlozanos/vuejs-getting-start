@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+
+    <script>
+
+        // Our data object
+        var data = { a: 1 }
+
+        // The object is added to a Vue instance
+        var vm = new Vue({
+            data: data
+        })
+
+        // Getting the property on the instance
+        // returns the one from the original data
+        vm.a == data.a // => true
+        console.log('VM_A: ' + vm.a + ' DATA_A: ' + data.a);
+
+        // Setting the property on the instance
+        // also affects the original data
+        vm.a = 2
+        data.a // => 2
+        console.log('VM_A: ' + vm.a + ' DATA_A: ' + data.a);
+
+        // ... and vice-versa
+        data.a = 3
+        vm.a // => 3
+        console.log('VM_A: ' + vm.a + ' DATA_A: ' + data.a);
+
+    </script>
+</body>
+
+</html>

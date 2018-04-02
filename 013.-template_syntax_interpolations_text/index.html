@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-once>This will never change: {{ msg }}</span>
+    </div>
+
+    <script>
+
+        var data = {
+            msg: 'Message from vue'
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: data
+        })
+
+        console.log('Changing value for msg');
+        console.log('vm.msg: ' + vm.msg);
+        vm.msg = 'New value'
+        console.log('vm.msg: ' + vm.msg);
+    </script>
+</body>
+
+</html>
