@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-bind:class="{ active: isActive }"> Text for div</div>
+        <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+            Text for div
+        </div>
+
+
+        <!-- Another way to declare classes -->
+        <div v-bind:class="classObject">Different Way</div>
+
+        <!-- classObject Computed -->
+        <div v-bind:class="classObjectComputed">Different Way 2</div>
+    </div>
+
+    <style>
+        .active {
+            background-color: red;
+        }
+
+        .static {
+            background-color: green;
+        }
+
+        .text-danger {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        var data = {
+            isActive: false,
+            hasError: true,
+            error: {
+                type: 'fatal'
+            }
+        }
+
+        data.classObject = {
+            'active': false,
+            'text-danger': true
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: data,
+            computed: {
+                classObjectComputed: function () {
+                    var object = {
+                        'active': this.isActive,
+                        'text-danger': this.error && this.error.type === 'fatal'
+                    }
+                    return object
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
