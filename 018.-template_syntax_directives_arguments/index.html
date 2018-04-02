@@ -12,14 +12,18 @@
 
 <body>
     <div id="app">
-        <span v-if="seen"> Now you see me</span>
+        <a v-bind:href="url"> Go to URL </a>
+        <a v-on:click="doSomething"> Do Something from vuejs</a>
     </div>
 
     <script>
 
         var data = {
-            seen: false
+            url: "http://www.google.com",
+            doSomething: null
         }
+
+
         var vm = new Vue({
             el: '#app',
             data: data

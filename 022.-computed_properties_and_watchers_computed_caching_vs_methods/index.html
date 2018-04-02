@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
+        <p>Reversed message: "{{ reverseMessage() }}"</p>
+
+        <span>
+            Methods allways run reverseMessage, but computed only will be executed under depends changed. In cases where you do not want
+            caching, use a method instead.
+        </span>
+    </div>
+
+    <script>
+
+        var data = {
+            message: 'hello'
+        }
+        var computed = {
+            // a computed getter
+            reversedMessage: function () {
+                // `this` points to the vm instance
+                return this.message.split('').reverse().join('')
+            }
+        }
+        var methods = {
+            reverseMessage: function () {
+                return this.message.split('').reverse().join('')
+            }
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: data,
+            computed: computed,
+            methods: methods
+        })
+    </script>
+</body>
+
+</html>

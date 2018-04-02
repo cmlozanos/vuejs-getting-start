@@ -12,17 +12,27 @@
 
 <body>
     <div id="app">
-        <span v-if="seen"> Now you see me</span>
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage }}"</p>
     </div>
 
     <script>
 
         var data = {
-            seen: false
+            message: 'hello'
         }
+        var computed = {
+            // a computed getter
+            reversedMessage: function () {
+                // `this` points to the vm instance
+                return this.message.split('').reverse().join('')
+            }
+        }
+
         var vm = new Vue({
             el: '#app',
-            data: data
+            data: data,
+            computed: computed
         })
     </script>
 </body>

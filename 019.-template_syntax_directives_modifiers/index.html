@@ -12,14 +12,19 @@
 
 <body>
     <div id="app">
-        <span v-if="seen"> Now you see me</span>
+        <span>Modifiers are special postfixes denoted by a dot, which indicate that a directive should</span>
+        <span>be bound in some special way. For example, the .prevent modifier tells the</span>
+        <span>v-on directive to call event.preventDefault() on the triggered event:</span>
+        <form v-on:submit.prevent="onSubmit"> ... </form>
     </div>
 
     <script>
 
         var data = {
-            seen: false
+            onSubmit: null
         }
+
+
         var vm = new Vue({
             el: '#app',
             data: data
